@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Florica Girisci – App Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #F7F6F3;
+      --surface: #EEECEA;
+      --card: #FFFFFF;
+      --text: #1A1A1A;
+      --muted: #6B6B6B;
+      --accent: #2D5A4F;
+      --accent-light: #E8F0EE;
+      --border: #E0DEDA;
+      --serif: 'DM Serif Display', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(247,246,243,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      max-width: 680px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover {
+      background: #1e3f37;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* SECTION WRAPPER */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .project-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .project-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ABOUT */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-blob {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--surface);
+      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; }
+      50% { border-radius: 60% 40% 45% 55% / 55% 60% 40% 45%; }
+    }
+
+    .about-text .section-desc {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .fact {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .fact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .fact-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-top: 0.45rem;
+      line-height: 1.5;
+    }
+
+    /* MODULES TIMELINE */
+    .modules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .module-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.75rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .module-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .module-meta {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: 0.1rem;
+    }
+
+    /* SKILLS */
+    #skills {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+
+    .skill-group-title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.825rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* CONTACT */
+    #contact {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: var(--accent);
+      border-radius: 24px;
+      padding: 4rem;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-card h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-card p {
+      font-size: 1rem;
+      opacity: 0.75;
+      max-width: 400px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      background: rgba(255,255,255,0.1);
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      white-space: nowrap;
+    }
+
+    .contact-link:hover { opacity: 1; background: rgba(255,255,255,0.18); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      #about {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-blob { font-size: 5rem; max-width: 280px; margin: 0 auto; }
+
+      .contact-card { padding: 2.5rem; }
+
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Florica Girisci</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projekte</a></li>
+      <li><a href="#about">Über mich</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="hero">
+      <div class="hero-content">
+        <span class="hero-badge">App Developer · Bremen</span>
+        <h1>Hallo, ich bin <em>Florica.</em></h1>
+        <p class="hero-sub">
+          Ich liebe es, Apps zu bauen – digitale Erlebnisse, die wirklich funktionieren und Menschen begeistern. Frisch aus meiner Weiterbildung als App-Entwicklerin, bereit für neue Herausforderungen.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">Meine Projekte</a>
+          <a href="#contact" class="btn-secondary">Kontakt aufnehmen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Meine Projekte</h2>
+    <p class="section-desc">Hier sind einige Apps und Projekte, an denen ich während meiner Weiterbildung gearbeitet habe. Füge hier deine eigenen Projekte ein!</p>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb">📱</div>
+        <div class="project-body">
+          <span class="project-tag">iOS · Swift</span>
+          <h3>Mein erstes Projekt</h3>
+          <p>Beschreibe hier dein erstes App-Projekt – was es macht, welche Technologien du benutzt hast und was du dabei gelernt hast.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">🤖</div>
+        <div class="project-body">
+          <span class="project-tag">Android · Kotlin</span>
+          <h3>Zweites Projekt</h3>
+          <p>Beschreibe dein zweites Projekt. Zum Beispiel eine Android-App mit Jetpack Compose, MVVM oder einer interessanten Funktion.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">🌱</div>
+        <div class="project-body">
+          <span class="project-tag">Persönliches Projekt</span>
+          <h3>Drittes Projekt</h3>
+          <p>Hast du eine eigene App-Idee umgesetzt? Zeig sie hier! Eigene Projekte zeigen deine Leidenschaft und Kreativität.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ABOUT -->
+  <div id="about" class="fade-in">
+    <div class="about-visual">
+      <div class="about-blob">👩‍💻</div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">Über mich</div>
+      <h2 class="section-title">Meine Geschichte</h2>
+      <p class="section-desc">
+        Ich bin Florica Girisci – App-Entwicklerin aus Bremen mit echter Leidenschaft fürs Bauen. Was mich antreibt? Das Gefühl, wenn eine Idee im Code zum Leben erwacht.
+      </p>
+      <div class="about-facts">
+        <div class="fact">
+          <div class="fact-icon">🎓</div>
+          <div class="fact-text">Kurz vor dem Abschluss meiner Weiterbildung als App-Entwicklerin – und bereit für den nächsten Schritt.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon">💡</div>
+          <div class="fact-text">Ich liebe es, Apps zu bauen – von der ersten Idee bis zur fertigen App auf dem Gerät.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon">🌍</div>
+          <div class="fact-text">Wohnhaft in Bremen. Offen für Remote-Jobs und spannende Projekte weltweit.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon">🚀</div>
+          <div class="fact-text">Schnell beim Lernen, gewissenhaft beim Umsetzen – immer mit dem Ziel, echten Mehrwert zu schaffen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- SKILLS -->
+  <section id="skills" class="fade-in">
+    <div class="section-label">Technologien & Tools</div>
+    <h2 class="section-title">Meine Skills</h2>
+    <p class="section-desc">Erworben in 13 Monaten intensiver Weiterbildung zur IT-Fachkraft für App-Entwicklung.</p>
+
+    <!-- MODULE TIMELINE -->
+    <div class="modules-list">
+
+      <div class="module-item">
+        <div class="module-header">
+          <div class="module-icon">🎨</div>
+          <div>
+            <div class="module-title">Modul 1 · Mobile UX/UI Design</div>
+            <div class="module-meta">2 Monate · Ergebnis: Fertiger Figma Klick-Prototype</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">User Stories</span>
+          <span class="skill-pill">User Flows</span>
+          <span class="skill-pill">Feature Requirements</span>
+          <span class="skill-pill">Rapid Prototyping</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">Agile Design Sprints</span>
+          <span class="skill-pill">Wireframes (Lo-Fi & Hi-Fi)</span>
+          <span class="skill-pill">Material Design</span>
+          <span class="skill-pill">iOS HIG</span>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-header">
+          <div class="module-icon">⚙️</div>
+          <div>
+            <div class="module-title">Modul 2 · Grundlagen Programmierung</div>
+            <div class="module-meta">2 Monate · Ergebnis: Interaktives Konsolenprogramm</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="skill-pill">Swift</span>
+          <span class="skill-pill">Xcode</span>
+          <span class="skill-pill">Datentypen & Variablen</span>
+          <span class="skill-pill">Funktionen</span>
+          <span class="skill-pill">Schleifen & Verzweigungen</span>
+          <span class="skill-pill">OOP</span>
+          <span class="skill-pill">Datenstrukturen</span>
+          <span class="skill-pill">Git & GitHub</span>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-header">
+          <div class="module-icon">🍎</div>
+          <div>
+            <div class="module-title">Modul 3 · iOS App Development</div>
+            <div class="module-meta">4 Monate · Ergebnis: Fertige iOS App in Swift</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="skill-pill">Swift</span>
+          <span class="skill-pill">SwiftUI</span>
+          <span class="skill-pill">MVVM</span>
+          <span class="skill-pill">Swift Data</span>
+          <span class="skill-pill">Repository Pattern</span>
+          <span class="skill-pill">Netzwerkdienste</span>
+          <span class="skill-pill">Navigation</span>
+          <span class="skill-pill">Firebase</span>
+          <span class="skill-pill">XCTest</span>
+        </div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-header">
+          <div class="module-icon">🤖</div>
+          <div>
+            <div class="module-title">Modul 4 · Android App Development</div>
+            <div class="module-meta">4 Monate · Ergebnis: Fertige Android App in Kotlin</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="skill-pill">Kotlin</span>
+          <span class="skill-pill">Jetpack Compose</span>
+          <span class="skill-pill">MVVM</span>
+          <span class="skill-pill">Flows</span>
+          <span class="skill-pill">Repository Pattern</span>
+          <span class="skill-pill">Retrofit (API)</span>
+          <span class="skill-pill">Koin</span>
+          <span class="skill-pill">Room</span>
+          <span class="skill-pill">Kotlin Coroutines</span>
+          <span class="skill-pill">Jetpack Navigation</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SOFT SKILLS -->
+    <div style="margin-top: 3rem;">
+      <div class="section-label" style="margin-bottom:1.5rem;">🧠 Soft & Social Skills</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">🤝 Kommunikation & Teamdynamik <span style="font-weight:300;opacity:0.6;font-size:0.75rem;">6 Std.</span></div>
+          <div class="skill-pills">
+            <span class="skill-pill">Kommunikationsarten</span>
+            <span class="skill-pill">Sender-Empfänger-Modell</span>
+            <span class="skill-pill">Teamrollen nach Belbin</span>
+            <span class="skill-pill">Teamwork gestalten</span>
+            <span class="skill-pill">Feedback-Methoden</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">🌿 Resilienz & Stressmanagement <span style="font-weight:300;opacity:0.6;font-size:0.75rem;">3 Std.</span></div>
+          <div class="skill-pills">
+            <span class="skill-pill">7 Säulen der Resilienz</span>
+            <span class="skill-pill">Resilienzförderung</span>
+            <span class="skill-pill">Stressmanagement</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">💡 Stärken- & Schwächen-Training <span style="font-weight:300;opacity:0.6;font-size:0.75rem;">1 Std.</span></div>
+          <div class="skill-pills">
+            <span class="skill-pill">Persönlichkeitstest</span>
+            <span class="skill-pill">Selbstreflexion</span>
+            <span class="skill-pill">Schwächen als Potenzial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
+    <div class="contact-card">
+      <div>
+        <h2>Lass uns zusammenarbeiten.</h2>
+        <p>Du suchst eine leidenschaftliche App-Entwicklerin? Ich freue mich auf deine Nachricht!</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:florica.girisci@yahoo.com" class="contact-link">
+          ✉️ &nbsp;florica.girisci@yahoo.com
+        </a>
+        <a href="https://github.com/" target="_blank" class="contact-link">
+          🐙 &nbsp;GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/florica-girisci" target="_blank" class="contact-link">
+          💼 &nbsp;LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Florica Girisci · Mit ❤️ gebaut
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+  
