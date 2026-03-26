@@ -29,7 +29,6 @@
       line-height: 1.6;
     }
 
-    /* NAV - Fixiert und immer sichtbar */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -46,7 +45,7 @@
 
     .nav-logo {
       font-family: var(--serif);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--text);
       text-decoration: none;
       font-weight: bold;
@@ -70,17 +69,14 @@
 
     .nav-links a:hover { color: var(--accent); }
 
-    /* HERO */
     .hero {
-      min-height: 90vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
-      padding: 100px 1.5rem 60px;
+      padding: 120px 1.5rem 60px;
       max-width: 1100px;
       margin: 0 auto;
     }
-
-    .hero-content { max-width: 700px; }
 
     .hero-badge {
       display: inline-block;
@@ -95,89 +91,61 @@
 
     .hero h1 {
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
       line-height: 1.1;
       margin-bottom: 1.5rem;
     }
 
     .hero h1 em { color: var(--accent); font-style: italic; }
 
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-      max-width: 500px;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    .btn-primary:hover { transform: translateY(-3px); }
-
-    /* SECTIONS */
     section {
-      padding: 100px 1.5rem;
+      padding: 80px 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
-      scroll-margin-top: 70px; /* Wichtig für die Navigation! */
+      scroll-margin-top: 70px;
     }
 
     .section-label { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem; }
-    .section-title { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 3rem; }
+    .section-title { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 2rem; }
 
-    /* PROJECTS GRID */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background: white;
+    /* PROJEKT HIGHLIGHT */
+    .featured-project {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.3s;
+      border-radius: 24px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4rem;
     }
 
-    .project-card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-    /* SKILLS */
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-    .skill-pill { background: var(--surface); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
-
-    /* CONTACT CARD */
-    .contact-card {
-      background: var(--accent);
-      color: white;
-      padding: 4rem 2rem;
-      border-radius: 30px;
-      text-align: center;
+    .project-image-placeholder {
+      background: var(--surface);
+      border-radius: 16px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
     }
 
-    .contact-link {
-      color: white;
-      text-decoration: none;
-      display: block;
-      margin: 1rem 0;
-      font-size: 1.2rem;
-      font-weight: 500;
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+    .skill-pill { background: var(--accent-light); color: var(--accent); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.75rem; font-weight: 600; }
+
+    .tech-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
-    /* MOBILE NAVIGATION FIX */
-    @media (max-width: 768px) {
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 0.8rem; }
-      .nav-links a { font-size: 0.7rem; }
-      .hero h1 { font-size: 2.8rem; }
+    .tech-item { font-size: 0.9rem; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 10px; }
+
+    @media (max-width: 850px) {
+      .featured-project { grid-template-columns: 1fr; padding: 2rem; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -194,84 +162,98 @@
   </nav>
 
   <header class="hero">
-    <div class="hero-content">
-      <span class="hero-badge">App Developer aus Bremen</span>
-      <h1>Hallo, ich bin <em>Florica.</em></h1>
-      <p class="hero-sub">Ich entwickle moderne Apps für iOS und Android. Frisch zertifiziert und bereit für neue Projekte.</p>
-      <a href="#projects" class="btn-primary">Portfolio ansehen</a>
+    <div>
+      <span class="hero-badge">App Developer · Bremen</span>
+      <h1>Vom Code zum <em>Erlebnis.</em></h1>
+      <p style="font-size: 1.2rem; color: var(--muted); max-width: 600px; margin-bottom: 2rem;">
+        Hallo, ich bin Florica. Ich entwickle native Apps mit Fokus auf Architektur, Performance und Nutzerfreundlichkeit.
+      </p>
+      <a href="#projects" style="background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600;">Projekt ansehen</a>
     </div>
   </header>
 
   <section id="projects">
-    <div class="section-label">Arbeit</div>
-    <h2 class="section-title">Ausgewählte Projekte</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>iOS App Projekt</h3>
-        <p>Entwickelt mit Swift & SwiftUI während meiner 13-monatigen Weiterbildung.</p>
-        <div class="skill-pills">
-          <span class="skill-pill">Swift</span>
-          <span class="skill-pill">MVVM</span>
-        </div>
+    <div class="section-label">Abschlussprojekt Android</div>
+    <h2 class="section-title">BeerFinder – Brewery Terminal</h2>
+    
+    <div class="featured-project">
+      <div class="project-image-placeholder">
+        🍺
       </div>
-      <div class="project-card">
-        <h3>Android App Projekt</h3>
-        <p>Native App Entwicklung mit Kotlin und Jetpack Compose.</p>
+      <div>
+        <p><strong>Entdecke Brauereien weltweit.</strong> Eine interaktive App, die GPS-Standorte nutzt, um Brauereien auf einer Karte anzuzeigen.</p>
+        
         <div class="skill-pills">
           <span class="skill-pill">Kotlin</span>
-          <span class="skill-pill">Compose</span>
+          <span class="skill-pill">Jetpack Compose</span>
+          <span class="skill-pill">MVVM</span>
+          <span class="skill-pill">Room DB</span>
+          <span class="skill-pill">Koin DI</span>
+          <span class="skill-pill">OpenStreetMap</span>
+        </div>
+
+        <ul style="list-style: none; color: var(--muted); font-size: 0.95rem;">
+          <li>✅ Stadtsuche & GPS-Lokalisierung</li>
+          <li>✅ Favoriten-System (Offline-Speicher)</li>
+          <li>✅ Dark/Light Mode & Dynamische UI</li>
+          <li>✅ Integration von Retrofit & Overpass API</li>
+        </ul>
+
+        <div class="tech-list">
+          <div class="tech-item"><strong>Architektur:</strong> Clean Architecture</div>
+          <div class="tech-item"><strong>Netzwerk:</strong> Retrofit + OkHttp</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about" style="background: var(--surface);">
+  <section id="skills" style="background: var(--surface);">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Tech Stack</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      <div>
+        <h4>Android Development</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">Kotlin</span>
+          <span class="skill-pill">Jetpack Compose</span>
+          <span class="skill-pill">Material 3</span>
+          <span class="skill-pill">Room & DataStore</span>
+        </div>
+      </div>
+      <div>
+        <h4>Architektur & Tools</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">MVVM</span>
+          <span class="skill-pill">Clean Architecture</span>
+          <span class="skill-pill">Koin (DI)</span>
+          <span class="skill-pill">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
     <div class="section-label">Hintergrund</div>
-    <h2 class="section-title">Über mich</h2>
-    <p style="max-width: 700px; font-size: 1.2rem; color: var(--muted);">
-      Nach meiner intensiven Weiterbildung zur IT-Fachkraft für App-Entwicklung brenne ich darauf, meine Kenntnisse in Swift, Kotlin und UI/UX Design in einem Team einzubringen. 
-      Ich liebe sauberen Code und intuitive Benutzeroberflächen.
+    <h2 class="section-title">Meine Geschichte</h2>
+    <p style="font-size: 1.1rem; color: var(--muted); max-width: 800px;">
+      Ich bin Florica Girisci, eine leidenschaftliche App-Entwicklerin aus Bremen. Nach 13 Monaten intensiver Weiterbildung habe ich gelernt, komplexe Ideen in funktionale, saubere Code-Strukturen zu verwandeln. Mein Fokus liegt auf der Entwicklung nativer Android-Apps mit Kotlin, aber ich besitze auch fundierte Kenntnisse in der iOS-Entwicklung mit Swift.
     </p>
   </section>
 
-  <section id="skills">
-    <div class="section-label">Expertise</div>
-    <h2 class="section-title">Tech Stack</h2>
-    <div class="projects-grid">
-      <div>
-        <h4>Mobile Development</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">Swift & SwiftUI</span>
-          <span class="skill-pill">Kotlin & Jetpack Compose</span>
-          <span class="skill-pill">MVVM Architecture</span>
-          <span class="skill-pill">Firebase</span>
-        </div>
-      </div>
-      <div>
-        <h4>Design & Tools</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">Git / GitHub</span>
-          <span class="skill-pill">Agile (Scrum)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="contact">
-    <div class="contact-card">
-      <h2 style="font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem;">Lust auf ein Gespräch?</h2>
-      <p>Ich bin aktuell auf der Suche nach neuen Herausforderungen.</p>
-      <a href="mailto:florica.girisci@yahoo.com" class="contact-link">florica.girisci@yahoo.com</a>
-      <div style="margin-top: 2rem;">
-        <a href="https://linkedin.com/in/florica-girisci" style="color: white; margin: 0 10px;">LinkedIn</a>
-        <a href="https://github.com" style="color: white; margin: 0 10px;">GitHub</a>
+    <div style="background: var(--accent); color: white; padding: 4rem 2rem; border-radius: 30px; text-align: center;">
+      <h2 style="font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem;">Bereit für neue Projekte?</h2>
+      <p style="margin-bottom: 2rem; opacity: 0.9;">Ich freue mich über Anfragen für Vollzeitstellen oder spannende Projekte.</p>
+      <a href="mailto:florica.girisci@yahoo.com" style="color: white; font-weight: bold; font-size: 1.2rem; text-decoration: none; border-bottom: 2px solid white; padding-bottom: 5px;">florica.girisci@yahoo.com</a>
+      <div style="margin-top: 3rem;">
+        <a href="https://linkedin.com/in/florica-girisci" style="color: white; margin: 0 15px; text-decoration: none; font-size: 0.9rem;">LinkedIn</a>
+        <a href="https://github.com" style="color: white; margin: 0 15px; text-decoration: none; font-size: 0.9rem;">GitHub</a>
       </div>
     </div>
   </section>
 
   <footer style="text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem;">
-    &copy; 2026 Florica Girisci · Bremen
+    &copy; 2026 Florica Girisci · Entwickelt mit Herz & Kotlin
   </footer>
 
 </body>
