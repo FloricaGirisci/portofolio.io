@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Florica Girisci – App Developer Portfolio</title>
+  <title>Florica Girisci – Certified App Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -14,6 +14,7 @@
       --muted: #6B6B6B;
       --accent: #2D5A4F;
       --accent-light: #E8F0EE;
+      --ihk-blue: #003366;
       --border: #E0DEDA;
       --serif: 'DM Serif Display', serif;
       --sans: 'DM Sans', sans-serif;
@@ -33,30 +34,36 @@
     .nav-logo { font-family: var(--serif); font-size: 1.25rem; color: var(--text); text-decoration: none; font-weight: bold; }
     .nav-links { display: flex; gap: 1.5rem; list-style: none; }
     .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
-    .nav-links a:hover { color: var(--accent); }
 
     .hero { min-height: 60vh; display: flex; align-items: center; padding: 120px 1.5rem 60px; max-width: 1100px; margin: 0 auto; }
-    .hero-badge { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 0.75rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
-    .hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    
+    .ihk-badge-container { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .ihk-badge { 
+      background: var(--ihk-blue); color: white; padding: 0.4rem 0.9rem; 
+      border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.2rem); line-height: 1.1; margin-bottom: 1.5rem; }
     .hero h1 em { color: var(--accent); font-style: italic; }
 
     section { padding: 60px 1.5rem; max-width: 1100px; margin: 0 auto; scroll-margin-top: 70px; }
-    .section-label { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem; }
-    .section-title { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 2rem; }
+    .section-label { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .section-title { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 2.5rem; }
 
-    .project-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-    .project-img { background: var(--surface); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 3rem; overflow: hidden; }
+    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; margin-bottom: 2rem; }
+    .project-img { background: var(--surface); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
     
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
     .skill-pill { background: var(--accent-light); color: var(--accent); padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; }
     .skill-pill.tech { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 
-    .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; }
-    
+    .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; border-top: 4px solid var(--ihk-blue); }
+    .module-item h4 { margin-bottom: 0.5rem; color: var(--ihk-blue); display: flex; align-items: center; gap: 8px; }
+    .module-date { font-size: 0.75rem; font-weight: 700; color: var(--muted); margin-bottom: 1rem; display: block; }
+
     .contact-card { background: var(--accent); color: white; padding: 4rem 2rem; border-radius: 30px; text-align: center; }
-    .contact-link { color: white; text-decoration: none; font-weight: bold; border-bottom: 2px solid white; padding-bottom: 3px; }
+    .contact-link { color: white; text-decoration: none; font-weight: bold; border-bottom: 2px solid white; }
 
     @media (max-width: 850px) {
       .project-card { grid-template-columns: 1fr; padding: 1.5rem; }
@@ -69,7 +76,7 @@
   <nav>
     <a href="#" class="nav-logo">FG.</a>
     <ul class="nav-links">
-      <li><a href="#projects">Projekte</a></li>
+      <li><a href="#projects">Portfolio</a></li>
       <li><a href="#skills">Qualifikation</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
@@ -77,65 +84,49 @@
 
   <header class="hero">
     <div>
-      <span class="hero-badge">App Developer · Bremen</span>
-      <h1>Native Apps für <em>iOS & Android.</em></h1>
-      <p style="font-size: 1.2rem; color: var(--muted); max-width: 600px; margin-bottom: 2rem;">
-        Ich bin Florica Girisci. Nach meiner 12-monatigen Qualifizierung entwickle ich performante Mobile-Lösungen mit Swift und Kotlin.
+      <div class="ihk-badge-container">
+        <span class="ihk-badge">iOS App Developer IHK</span>
+        <span class="ihk-badge">Android App Developer IHK</span>
+      </div>
+      <h1>Native Apps mit <em>IHK-Zertifizierung.</em></h1>
+      <p style="font-size: 1.2rem; color: var(--muted); max-width: 650px; margin-bottom: 2rem;">
+        Ich bin Florica Girisci. Als zertifizierte App-Entwicklerin (IHK) realisiere ich performante Lösungen für iOS und Android – fundiert, strukturiert und am Puls der Zeit. [cite: 6, 33]
       </p>
-      <a href="#projects" style="background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600;">Portfolio ansehen</a>
+      <a href="#projects" style="background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600;">Projekte ansehen</a>
     </div>
   </header>
 
   <section id="projects">
-    <div class="section-label">Portfolio</div>
+    <div class="section-label">Meilensteine</div>
     <h2 class="section-title">Ausgewählte Projekte</h2>
     
     <div class="project-grid">
       <div class="project-card">
         <div class="project-img">🕹️✨</div>
         <div>
-          <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent);">iOS ABSCHLUSSPRÜFUNG</span>
+          <span style="font-size: 0.7rem; font-weight: 800; color: var(--ihk-blue);">IHK PROJEKTARBEIT iOS</span>
           <h3 style="margin: 0.5rem 0;">NeonArcadeGames</h3>
-          <p style="font-size: 0.9rem; color: var(--muted);">Neon-styled Spiele-Bundle mit 4 Minispielen. Nutzt Firebase Auth/Firestore für tägliche Missionen und Streaks.</p>
+          <p style="font-size: 0.9rem; color: var(--muted);">Spielebundle mit SwiftData, Firebase Auth und Cloud Firestore Integration. [cite: 26]</p>
           <div class="skill-pills">
             <span class="skill-pill tech">SwiftUI</span>
             <span class="skill-pill tech">Firebase</span>
             <span class="skill-pill tech">SwiftData</span>
             <span class="skill-pill tech">MVVM</span>
           </div>
-          <ul style="font-size: 0.8rem; color: var(--muted); padding-left: 1rem;">
-            <li>Echtzeit-Synchronisation & Cloud Sync</li>
-            <li>Custom Neon UI System</li>
-            <li>Dictionary & Random Word API</li>
-          </ul>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-img">🍺📍</div>
         <div>
-          <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent);">ANDROID ABSCHLUSSPRÜFUNG</span>
-          <h3 style="margin: 0.5rem 0;">BeerFinder – Brewery Terminal</h3>
-          <p style="font-size: 0.9rem; color: var(--muted);">Native App zur GPS-basierten Suche von Brauereien weltweit inkl. Favoriten-Speicherung und Kartenintegration.</p>
+          <span style="font-size: 0.7rem; font-weight: 800; color: var(--ihk-blue);">IHK PROJEKTARBEIT ANDROID</span>
+          <h3 style="margin: 0.5rem 0;">BeerFinder</h3>
+          <p style="font-size: 0.9rem; color: var(--muted);">Native Android-App mit Fokus auf moderne Compose Layouts und API-Anbindung. [cite: 44, 48]</p>
           <div class="skill-pills">
             <span class="skill-pill tech">Kotlin</span>
             <span class="skill-pill tech">Jetpack Compose</span>
             <span class="skill-pill tech">Room DB</span>
-            <span class="skill-pill tech">Koin DI</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">⚔️🛡️</div>
-        <div>
-          <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent);">GRUNDLAGEN PRÜFUNG</span>
-          <h3 style="margin: 0.5rem 0;">RPG Battle Simulator</h3>
-          <p style="font-size: 0.9rem; color: var(--muted);">Rundenbasiertes Kampfsystem in Swift. Fokus auf komplexe Logik, OOP und Inventarsysteme.</p>
-          <div class="skill-pills">
-            <span class="skill-pill tech">Swift Logic</span>
-            <span class="skill-pill tech">OOP</span>
-            <span class="skill-pill tech">Game Design</span>
+            <span class="skill-pill tech">Retrofit</span>
           </div>
         </div>
       </div>
@@ -143,33 +134,45 @@
   </section>
 
   <section id="skills" style="background: var(--surface);">
-    <div class="section-label">Qualifikation</div>
-    <h2 class="section-title">12 Monate IT-Fachkraft</h2>
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Zertifizierte Qualifikationen</h2>
+    
     <div class="module-grid">
       <div class="module-item">
-        <h4 style="margin-bottom: 1rem;">📱 Mobile Tech</h4>
+        <span class="module-date">Abschluss: 21.11.2025 [cite: 7]</span>
+        <h4>🍎 iOS App Developer (IHK)</h4>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;">290 Unterrichtsstunden </p>
         <div class="skill-pills">
-          <span class="skill-pill">Kotlin / Compose</span>
-          <span class="skill-pill">Swift / SwiftUI</span>
-          <span class="skill-pill">Swift Data / Room</span>
-          <span class="skill-pill">Firebase Integration</span>
-          <span class="skill-pill">MVVM & Repository</span>
+          <span class="skill-pill">Swift & SwiftUI [cite: 18, 19]</span>
+          <span class="skill-pill">MVVM & Property Wrapper [cite: 21]</span>
+          <span class="skill-pill">Core Data [cite: 22]</span>
+          <span class="skill-pill">Repository Patterns [cite: 24]</span>
+          <span class="skill-pill">Firebase [cite: 26]</span>
+          <span class="skill-pill">Netzwerke [cite: 23]</span>
         </div>
       </div>
+
       <div class="module-item">
-        <h4 style="margin-bottom: 1rem;">🎨 UI/UX Design</h4>
+        <span class="module-date">Abschluss: 20.03.2026 [cite: 34]</span>
+        <h4>🤖 Android App Developer (IHK)</h4>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;">245 Unterrichtsstunden </p>
         <div class="skill-pills">
-          <span class="skill-pill">Figma Prototyping</span>
-          <span class="skill-pill">iOS HIG</span>
-          <span class="skill-pill">Material Design</span>
-          <span class="skill-pill">Wireframing</span>
+          <span class="skill-pill">Compose Essentials [cite: 44]</span>
+          <span class="skill-pill">App-Architektur & State [cite: 45]</span>
+          <span class="skill-pill">Datenbanken [cite: 47]</span>
+          <span class="skill-pill">API Integration [cite: 48]</span>
+          <span class="skill-pill">App-Testing [cite: 49]</span>
+          <span class="skill-pill">Theming & Animationen [cite: 46]</span>
         </div>
       </div>
-      <div class="module-item">
-        <h4 style="margin-bottom: 1rem;">🧠 Soft Skills</h4>
+
+      <div class="module-item" style="border-top-color: var(--accent);">
+        <span class="module-date">Zusatzqualifikation</span>
+        <h4>🤝 Professional Skills</h4>
+        <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem;">Social & Soft Skills Training</p>
         <div class="skill-pills">
-          <span class="skill-pill">Teamdynamik (Belbin)</span>
-          <span class="skill-pill">Resilienz</span>
+          <span class="skill-pill">Kommunikation & Teamdynamik</span>
+          <span class="skill-pill">Resilienz & Stressmanagement</span>
           <span class="skill-pill">Agile Methodik</span>
           <span class="skill-pill">Feedback-Kultur</span>
         </div>
@@ -179,18 +182,18 @@
 
   <section id="contact">
     <div class="contact-card">
-      <h2 style="font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem;">Lust auf ein Gespräch?</h2>
-      <p style="margin-bottom: 2rem;">Junior App Developer bereit für den Einstieg.</p>
+      <h2 style="font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem;">Interesse geweckt?</h2>
+      <p style="margin-bottom: 2rem;">Junior App Developer (IHK) · Bremen</p>
       <a href="mailto:florica.girisci@yahoo.com" class="contact-link">florica.girisci@yahoo.com</a>
-      <div style="margin-top: 2rem;">
-        <a href="https://linkedin.com/in/florica-girisci" style="color: white; margin: 0 10px; font-weight: bold; text-decoration: none;">LinkedIn</a>
-        <a href="https://github.com/florica-girisci" style="color: white; margin: 0 10px; font-weight: bold; text-decoration: none;">GitHub</a>
+      <div style="margin-top: 3rem;">
+        <a href="https://linkedin.com/in/florica-girisci" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">LinkedIn</a>
+        <a href="https://github.com/florica-girisci" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">GitHub</a>
       </div>
     </div>
   </section>
 
-  <footer style="text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem; background: var(--surface);">
-    &copy; 2026 Florica Girisci · Bremen
+  <footer style="text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem;">
+    &copy; 2026 Florica Girisci · IHK Certified App Developer
   </footer>
 
 </body>
