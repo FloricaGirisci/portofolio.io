@@ -47,7 +47,6 @@
     .section-label { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; }
     .section-title { font-family: var(--serif); font-size: 2.8rem; margin-bottom: 3rem; }
 
-    /* PROJEKT GALERIE RESPONSIVE */
     .project-card { 
       background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; 
       display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; margin-bottom: 2rem; 
@@ -62,19 +61,23 @@
     }
     .project-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-    .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; border-top: 5px solid var(--ihk-blue); }
+    .thumb-strip { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+    .thumb-img { width: 50px; height: 50px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; }
+    .thumb-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; border-top: 5px solid var(--ihk-blue); height: 100%; }
     .module-date { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 1rem; display: block; }
+    
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .skill-pill { background: var(--accent-light); color: var(--accent); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
 
     .contact-card { background: var(--accent); color: white; padding: 4rem 2rem; border-radius: 32px; text-align: center; }
     .contact-link { color: white; text-decoration: none; font-weight: bold; border-bottom: 3px solid white; font-size: clamp(1.1rem, 4vw, 1.4rem); }
 
-    /* MOBILE OPTIMIERUNG */
     @media (max-width: 850px) {
       .project-card { grid-template-columns: 1fr; padding: 1.5rem; }
       .nav-links { display: none; }
-      .hero { text-align: center; justify-content: center; }
-      .ihk-badge-container { justify-content: center; }
     }
   </style>
 </head>
@@ -115,23 +118,21 @@
                 <div class="project-img-container"><img src="search-portrait.png" alt="Suche"></div>
                 <div class="project-img-container"><img src="favorites-portrait.png" alt="Favoriten"></div>
             </div>
-            <div style="display:flex; gap:10px; justify-content: center;">
-                <div style="width:50px; height:50px; border-radius:8px; overflow:hidden; border:1px solid #ddd;">
-                    <img src="detail-portrait.png" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div style="width:50px; height:50px; border-radius:8px; overflow:hidden; border:1px solid #ddd;">
-                    <img src="map-left.jpg" style="width:100%; height:100%; object-fit:cover;">
-                </div>
+            <div class="thumb-strip">
+                <div class="thumb-img"><img src="detail-portrait.png" alt="Details"></div>
+                <div class="thumb-img"><img src="map-left.jpg" alt="Karte"></div>
             </div>
         </div>
         <div>
-          <span style="font-size: 0.75rem; font-weight: 800; color: var(--ihk-blue);">IHK ABSCHLUSS ANDROID (20.03.2026)</span>
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--ihk-blue);">IHK ABSCHLUSS ANDROID</span>
           <h3 style="margin: 0.6rem 0; font-size: 1.5rem; font-family: var(--serif);">BeerFinder</h3>
           <p style="font-size: 0.95rem; color: var(--muted);">Entdecke Brauereien weltweit mit GPS-Suche und Offline-Favoriten (Room DB).</p>
-          <div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:10px;">
-            <span style="background:#eee; padding:3px 8px; border-radius:4px; font-size:0.7rem;">Kotlin</span>
-            <span style="background:#eee; padding:3px 8px; border-radius:4px; font-size:0.7rem;">Compose</span>
-            <span style="background:#eee; padding:3px 8px; border-radius:4px; font-size:0.7rem;">MVVM</span>
+          <div class="skill-pills">
+            <span class="skill-pill">Kotlin</span>
+            <span class="skill-pill">Compose</span>
+            <span class="skill-pill">MVVM</span>
+            <span class="skill-pill">Room DB</span>
+            <span class="skill-pill">Retrofit</span>
           </div>
         </div>
       </div>
@@ -143,14 +144,40 @@
     <h2 class="section-title">Zertifizierte Qualifikationen</h2>
     <div class="module-grid">
       <div class="module-item">
-        <span class="module-date">Abschluss: 21.11.2025 [cite: 7]</span>
+        <span class="module-date">Abschluss: 21.11.2025</span>
         <h4>🍎 iOS App Developer (IHK)</h4>
-        <p style="font-size: 0.8rem; color: var(--muted);">290 Unterrichtsstunden [cite: 27]</p>
+        <p style="font-size: 0.8rem; color: var(--muted);">290 Unterrichtsstunden</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Swift & SwiftUI</span>
+          <span class="skill-pill">MVVM</span>
+          <span class="skill-pill">Core Data</span>
+          <span class="skill-pill">Firebase</span>
+        </div>
       </div>
+
       <div class="module-item">
-        <span class="module-date">Abschluss: 20.03.2026 [cite: 34]</span>
+        <span class="module-date">Abschluss: 20.03.2026</span>
         <h4>🤖 Android App Developer (IHK)</h4>
-        <p style="font-size: 0.8rem; color: var(--muted);">245 Unterrichtsstunden [cite: 50]</p>
+        <p style="font-size: 0.8rem; color: var(--muted);">245 Unterrichtsstunden</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Compose Essentials</span>
+          <span class="skill-pill">Architektur & State</span>
+          <span class="skill-pill">Room DB</span>
+          <span class="skill-pill">App-Testing</span>
+        </div>
+      </div>
+
+      <div class="module-item" style="border-top-color: var(--accent);">
+        <span class="module-date">Zusatzqualifikation</span>
+        <h4>🤝 Soft & Social Skills</h4>
+        <p style="font-size: 0.8rem; color: var(--muted);">Interdisziplinäre Kompetenzen</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Kommunikation & Teamdynamik</span>
+          <span class="skill-pill">Belbin-Teamrollen</span>
+          <span class="skill-pill">Resilienz & Stressmanagement</span>
+          <span class="skill-pill">Stärken- & Schwächen-Training</span>
+          <span class="skill-pill">Feedback-Methoden</span>
+        </div>
       </div>
     </div>
   </section>
