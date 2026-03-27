@@ -60,25 +60,55 @@
     .section-label { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; }
     .section-title { font-family: var(--serif); font-size: 2.8rem; margin-bottom: 3rem; }
 
-    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; margin-bottom: 2rem; }
-    .project-img { background: var(--surface); border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+    /* PROJEKT KARTE */
+    .project-card { 
+      background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; 
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: start; margin-bottom: 2rem; 
+    }
+    
+    /* NEUE GALERIE STRUKTUR */
+    .project-gallery { display: flex; flex-direction: column; gap: 1rem; }
+    .gallery-main { display: flex; gap: 1rem; align-items: start; }
+    
+    .project-img-container { 
+      background: var(--surface); border-radius: 16px; 
+      width: calc(50% - 0.5rem); aspect-ratio: 9/16; 
+      display: flex; align-items: center; justify-content: center; overflow: hidden; 
+      border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    
+    .project-img-container img { width: 100%; height: 100%; object-fit: cover; }
+    
+    /* VORSCHAU-BILDER */
+    .gallery-thumbs { display: flex; gap: 0.5rem; justify-content: center; }
+    .thumb-container { 
+      width: 60px; aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; 
+      border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s;
+    }
+    .thumb-container:hover, .thumb-container.active { border-color: var(--accent); }
+    .thumb-container img { width: 100%; height: 100%; object-fit: cover; }
     
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0; }
     .skill-pill { background: var(--accent-light); color: var(--accent); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
     .skill-pill.tech { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 
     .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; border-top: 5px solid var(--ihk-blue); }
+    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 166px; padding: 2rem; border-top: 5px solid var(--ihk-blue); }
     .module-item h4 { margin-bottom: 0.5rem; color: var(--ihk-blue); font-size: 1.2rem; }
     .module-date { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 1.2rem; display: block; }
 
     .contact-card { background: var(--accent); color: white; padding: 5rem 2rem; border-radius: 32px; text-align: center; }
     .contact-link { color: white; text-decoration: none; font-weight: bold; border-bottom: 3px solid white; font-size: 1.4rem; padding-bottom: 4px; }
 
-    @media (max-width: 850px) {
-      .project-card { grid-template-columns: 1fr; padding: 2rem; }
+    @media (max-width: 950px) {
+      .project-card { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
       .hero h1 { font-size: 3rem; }
       .nav-links { display: none; }
+    }
+    
+    @media (max-width: 600px) {
+      .gallery-main { flex-direction: column; align-items: center; }
+      .project-img-container { width: 80%; margin-bottom: 1rem; }
     }
   </style>
 </head>
@@ -117,7 +147,12 @@
     
     <div class="project-grid">
       <div class="project-card">
-        <div class="project-img">🕹️✨</div>
+        <div class="project-gallery">
+            <div class="gallery-main">
+                <div class="project-img-container">🕹️</div>
+                <div class="project-img-container">✨</div>
+            </div>
+        </div>
         <div>
           <span style="font-size: 0.75rem; font-weight: 800; color: var(--ihk-blue); letter-spacing: 0.05em;">IHK ABSCHLUSS iOS</span>
           <h3 style="margin: 0.6rem 0; font-size: 1.5rem; font-family: var(--serif);">NeonArcadeGames</h3>
@@ -132,7 +167,34 @@
       </div>
 
       <div class="project-card">
-        <div class="project-img">🍺📍</div>
+        <div class="project-gallery">
+            <div class="gallery-main">
+                <div class="project-img-container">
+                    <img src="search-portrait.jpg" alt="BeerFinder Suchfunktion" id="beerfinder-main-1">
+                </div>
+                <div class="project-img-container">
+                    <img src="favorites-portrait.jpg" alt="BeerFinder Favoriten" id="beerfinder-main-2">
+                </div>
+            </div>
+            
+            <div class="gallery-thumbs">
+                <div class="thumb-container active">
+                    <img src="search-portrait.jpg" alt="Vorschau Suche Portrait">
+                </div>
+                <div class="thumb-container">
+                    <img src="favorites-portrait.jpg" alt="Vorschau Favoriten Portrait">
+                </div>
+                <div class="thumb-container">
+                    <img src="detail-portrait.jpg" alt="Vorschau Details Portrait">
+                </div>
+                <div class="thumb-container">
+                    <img src="map-left.jpg" alt="Vorschau Karte Links">
+                </div>
+                <div class="thumb-container">
+                    <img src="detail-right.jpg" alt="Vorschau Details Rechts">
+                </div>
+            </div>
+        </div>
         <div>
           <span style="font-size: 0.75rem; font-weight: 800; color: var(--ihk-blue); letter-spacing: 0.05em;">IHK ABSCHLUSS ANDROID</span>
           <h3 style="margin: 0.6rem 0; font-size: 1.5rem; font-family: var(--serif);">BeerFinder</h3>
@@ -213,4 +275,3 @@
 
 </body>
 </html>
-  
