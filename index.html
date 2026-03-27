@@ -7,68 +7,156 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #F7F6F3;
-      --surface: #EEECEA;
-      --card: #FFFFFF;
-      --text: #1A1A1A;
-      --muted: #6B6B6B;
-      --accent: #2D5A4F;
-      --accent-light: #E8F0EE;
-      --ihk-blue: #003366;
-      --border: #E0DEDA;
+      /* MIDNIGHT TECH THEME */
+      --bg: #10141D;          /* Tiefes Nachtblau */
+      --surface: #1A1F2B;     /* Sehr dunkles Grau-Blau für Sektionen */
+      --card: #242936;        /* Etwas helleres Grau-Blau für Karten */
+      --text: #E0E6ED;        /* Helles, kühles Grau für Text */
+      --muted: #94A3B8;       /* Gedimmtes Blau-Grau für Subtexte */
+      --accent: #00F2FE;      /* Leuchtendes Cyan/Petrol für Akzente */
+      --accent-light: rgba(0, 242, 254, 0.1); /* Transparentes Cyan für Badges */
+      --ihk-blue: #0056D6;    /* Kräftiges IHK-Blau, angepasst für Dunkel */
+      --border: #2D3748;      /* Dunkler Rand für Trennungen */
+      
       --serif: 'DM Serif Display', serif;
       --sans: 'DM Sans', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { 
+      font-family: var(--sans); 
+      background: var(--bg); 
+      color: var(--text); 
+      line-height: 1.6; 
+      -webkit-font-smoothing: antialiased; 
+    }
 
+    /* NAVIGATION - Dunkel & Transparent */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(247,246,243,0.95); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border); padding: 0 1.5rem; height: 70px;
+      background: rgba(16, 20, 29, 0.9); /* --bg mit Transparenz */
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); 
+      padding: 0 1.5rem; height: 70px;
       display: flex; align-items: center; justify-content: space-between;
     }
 
-    .nav-logo { font-family: var(--serif); font-size: 1.25rem; color: var(--text); text-decoration: none; font-weight: bold; }
+    .nav-logo { font-family: var(--serif); font-size: 1.25rem; color: var(--accent); text-decoration: none; font-weight: bold; }
     .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; text-transform: uppercase; }
+    .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
 
+    /* HERO */
     .hero { min-height: 60vh; display: flex; align-items: center; padding: 120px 1.5rem 60px; max-width: 1100px; margin: 0 auto; }
     .ihk-badge-container { display: flex; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap; }
     .ihk-badge { background: var(--ihk-blue); color: white; padding: 0.45rem 1rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
 
     .name-brand { font-size: 1.5rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; display: block; }
-    .hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; color: #FFFFFF; }
     .hero h1 em { color: var(--accent); font-style: italic; }
+    .hero p { font-size: 1.2rem; color: var(--muted); max-width: 650px; margin-bottom: 2rem; }
 
+    /* SECTIONS GENERAL */
     section { padding: 80px 1.5rem; max-width: 1100px; margin: 0 auto; scroll-margin-top: 70px; }
     .section-label { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .section-title { font-family: var(--serif); font-size: 2.8rem; margin-bottom: 3rem; }
+    .section-title { font-family: var(--serif); font-size: 2.8rem; margin-bottom: 3rem; color: #FFFFFF; }
 
-    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; margin-bottom: 3rem; }
+    /* PROJEKT KARTEN */
+    .project-card { 
+      background: var(--card); 
+      border: 1px solid var(--border); 
+      border-radius: 24px; 
+      padding: 2.5rem; 
+      margin-bottom: 3rem; 
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.05);
+    }
+    .project-card h3 { color: #FFFFFF; }
     
     /* GALERIEN */
     .full-gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 2rem; }
-    .gallery-item { background: var(--surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 9/16; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item { background: var(--bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 9/16; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .gallery-item img:hover { transform: scale(1.05); }
 
-    /* iOS BULK BILD */
-    .bulk-image-container { margin-top: 2rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; }
-    .bulk-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    .bulk-image-container, .uml-container { margin-top: 2rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); }
+    .bulk-image-container img, .uml-container img { width: 100%; height: auto; display: block; }
 
+    /* QUALIFIKATIONEN GRIDS */
     .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-    .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; border-top: 5px solid var(--ihk-blue); height: 100%; }
-    .module-date { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 1rem; display: block; }
+    .module-item { 
+      background: var(--card); 
+      border: 1px solid var(--border); 
+      border-radius: 16px; 
+      padding: 2rem; 
+      border-top: 5px solid var(--ihk-blue); 
+      height: 100%; 
+      transition: transform 0.3s;
+    }
+    .module-item:hover { transform: translateY(-5px); }
+    .module-item h4 { color: #FFFFFF; }
+    .module-date { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem; display: block; }
     
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-    .skill-pill { background: var(--accent-light); color: var(--accent); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+    .skill-pill { 
+      background: var(--accent-light); 
+      color: var(--accent); 
+      padding: 0.3rem 0.6rem; 
+      border-radius: 4px; 
+      font-size: 0.7rem; 
+      font-weight: 600; 
+      border: 1px solid rgba(0, 242, 254, 0.2);
+    }
 
-    .contact-card { background: var(--accent); color: white; padding: 5rem 2rem; border-radius: 32px; text-align: center; }
-    .contact-link { color: white; text-decoration: none; font-weight: bold; border-bottom: 3px solid white; font-size: clamp(1.1rem, 4vw, 1.4rem); margin: 10px 0; display: inline-block; }
+    /* KONTAKT KARTE */
+    .contact-card { 
+      background: var(--card); 
+      color: var(--text); 
+      padding: 5rem 2rem; 
+      border-radius: 32px; 
+      text-align: center; 
+      border: 1px solid var(--border);
+    }
+    .contact-card h2 { color: #FFFFFF; }
+    .contact-link { 
+      color: var(--accent); 
+      text-decoration: none; 
+      font-weight: bold; 
+      border-bottom: 3px solid var(--accent); 
+      font-size: clamp(1.1rem, 4vw, 1.4rem); 
+      margin: 10px 0; 
+      display: inline-block; 
+    }
     
-    @media (max-width: 850px) { .full-gallery { grid-template-columns: repeat(3, 1fr); } .nav-links { display: none; } }
+    .social-links { margin-top: 3rem; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .social-links a { 
+      color: var(--text); 
+      font-weight: bold; 
+      text-decoration: none; 
+      border: 1px solid var(--border); 
+      padding: 10px 20px; 
+      border-radius: 8px; 
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .social-links a:hover { 
+      background: var(--accent-light); 
+      border-color: var(--accent); 
+      color: var(--accent); 
+    }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); background: var(--surface); }
+
+    /* MOBILE OPTIMIERUNG */
+    @media (max-width: 850px) {
+      .project-card { padding: 1.5rem; }
+      .full-gallery { grid-template-columns: repeat(3, 1fr); } 
+      .nav-links { display: none; } 
+    }
     @media (max-width: 500px) { .full-gallery { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
@@ -91,10 +179,10 @@
       </div>
       <span class="name-brand">Florica Girisci</span>
       <h1>Native Apps mit <em>IHK-Zertifizierung.</em></h1>
-      <p style="font-size: 1.2rem; color: var(--muted); max-width: 650px; margin-bottom: 2rem;">
+      <p>
         Zertifizierte App-Entwicklerin für iOS und Android – fundiert, strukturiert und am Puls der Zeit.
       </p>
-      <a href="#projects" style="background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600;">Projekte ansehen</a>
+      <a href="#projects" style="background: var(--ihk-blue); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600; display: inline-block;">Projekte ansehen</a>
     </div>
   </header>
 
@@ -106,21 +194,17 @@
       <span style="font-size: 0.75rem; font-weight: 800; color: var(--ihk-blue);">IHK ABSCHLUSS ANDROID</span>
       <h3 style="margin: 0.6rem 0; font-size: 1.8rem; font-family: var(--serif);">BeerFinder – Brewery Terminal</h3>
       <p style="color: var(--muted); max-width: 800px;">
-        Entdecke Brauereien weltweit mit präziser GPS-Suche und verwalte deine Favoriten in einer lokalen Room-Datenbank. Entwickelt mit Jetpack Compose für ein modernes Nutzererlebnis.
+        Entdecke Brauereien weltweit mit präziser GPS-Suche und verwalte deine Favoriten in einer lokalen Room-Datenbank.
       </p>
       <div class="skill-pills">
-        <span class="skill-pill">Kotlin</span>
-        <span class="skill-pill">Jetpack Compose</span>
-        <span class="skill-pill">MVVM</span>
-        <span class="skill-pill">Room DB</span>
-        <span class="skill-pill">Retrofit API</span>
+        <span class="skill-pill">Kotlin</span><span class="skill-pill">Jetpack Compose</span><span class="skill-pill">MVVM</span><span class="skill-pill">Room DB</span><span class="skill-pill">Retrofit API</span>
       </div>
       <div class="full-gallery">
         <div class="gallery-item"><img src="search-portrait.png" alt="Suche"></div>
         <div class="gallery-item"><img src="favorites-portrait.png" alt="Favoriten"></div>
         <div class="gallery-item"><img src="detail-portrait.png" alt="Detailansicht"></div>
         <div class="gallery-item"><img src="map-left.png" alt="Karte"></div>
-        <div class="gallery-item"><img src="detail-right.png" alt="Details"></div>
+        <div class="gallery-item"><img src="detail-right.png" alt="Details 2"></div>
       </div>
     </div>
 
@@ -131,24 +215,24 @@
         Vier Mini-Games im Neon-Style mit Firebase Auth und SwiftData Integration. Bietet tägliche Herausforderungen und Streaks.
       </p>
       <div class="skill-pills">
-        <span class="skill-pill">SwiftUI</span>
-        <span class="skill-pill">Firebase</span>
-        <span class="skill-pill">SwiftData</span>
-        <span class="skill-pill">MVVM</span>
+        <span class="skill-pill">SwiftUI</span><span class="skill-pill">Firebase</span><span class="skill-pill">SwiftData</span><span class="skill-pill">MVVM</span>
       </div>
       <div class="bulk-image-container">
-        <img src="neonarcadeBulk.png" alt="NeonArcadeGames Screenshots Bulk Ansicht">
+        <img src="neonarcadeBulk.png" alt="NeonArcadeGames Bulk Screenshots">
       </div>
     </div>
 
     <div class="project-card">
       <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent);">SWIFT GRUNDLAGEN</span>
-      <h3 style="margin: 0.6rem 0; font-size: 1.8rem; font-family: var(--serif);">RPG Battle Simulator</h3>
-      <p style="color: var(--muted);">Rundenbasiertes Kampfsystem mit Fokus auf OOP, Klassen-Strukturen und Spielelogik.</p>
+      <h3 style="margin: 0.6rem 0; font-size: 1.8rem; font-family: var(--serif);">⚔️ RPG Battle Simulator</h3>
+      <p style="color: var(--muted); max-width: 800px;">
+        Rundenbasiertes Kampfsystem in Swift. Fokus auf Klassen-Strukturen, Inventarverwaltung und komplexe Spielelogik.
+      </p>
       <div class="skill-pills">
-        <span class="skill-pill">Swift</span>
-        <span class="skill-pill">OOP</span>
-        <span class="skill-pill">Game Logic</span>
+        <span class="skill-pill">Swift</span><span class="skill-pill">OOP</span><span class="skill-pill">Game Logic</span>
+      </div>
+      <div class="uml-container">
+        <img src="diagram.png" alt="UML Software Architektur Diagramm">
       </div>
     </div>
   </section>
@@ -162,10 +246,7 @@
         <h4>🍎 iOS App Developer (IHK)</h4>
         <p style="font-size: 0.85rem; color: var(--muted);">Umfang: 290 Unterrichtsstunden</p>
         <div class="skill-pills">
-          <span class="skill-pill">SwiftUI</span>
-          <span class="skill-pill">MVVM</span>
-          <span class="skill-pill">Core Data</span>
-          <span class="skill-pill">Firebase</span>
+          <span class="skill-pill">SwiftUI</span><span class="skill-pill">MVVM</span><span class="skill-pill">Core Data</span><span class="skill-pill">Firebase</span>
         </div>
       </div>
       <div class="module-item">
@@ -173,20 +254,14 @@
         <h4>🤖 Android App Developer (IHK)</h4>
         <p style="font-size: 0.85rem; color: var(--muted);">Umfang: 245 Unterrichtsstunden</p>
         <div class="skill-pills">
-          <span class="skill-pill">Compose Essentials</span>
-          <span class="skill-pill">Architektur</span>
-          <span class="skill-pill">Room DB</span>
-          <span class="skill-pill">Testing</span>
+          <span class="skill-pill">Compose Essentials</span><span class="skill-pill">Architektur</span><span class="skill-pill">Room DB</span><span class="skill-pill">Testing</span>
         </div>
       </div>
       <div class="module-item" style="border-top-color: var(--accent);">
         <span class="module-date">Qualifizierung</span>
         <h4>🤝 Soft & Social Skills</h4>
         <div class="skill-pills">
-          <span class="skill-pill">Kommunikation & Teamdynamik</span>
-          <span class="skill-pill">Belbin-Teamrollen</span>
-          <span class="skill-pill">Resilienz</span>
-          <span class="skill-pill">Feedback-Methoden</span>
+          <span class="skill-pill">Kommunikation & Teamdynamik</span><span class="skill-pill">Belbin-Teamrollen</span><span class="skill-pill">Resilienz</span><span class="skill-pill">Feedback-Methoden</span>
         </div>
       </div>
     </div>
@@ -196,14 +271,14 @@
     <div class="contact-card">
       <h2 style="font-family: var(--serif); font-size: 2.5rem; margin-bottom: 1.5rem;">Lust auf ein Gespräch?</h2>
       <a href="mailto:florica.girisci@yahoo.com" class="contact-link">florica.girisci@yahoo.com</a>
-      <div style="margin-top: 2rem;">
-        <a href="https://linkedin.com/in/florica-girisci" target="_blank" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 8px;">LinkedIn</a>
-        <a href="https://github.com/florica-girisci" target="_blank" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 8px;">GitHub</a>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/florica-girisci" target="_blank">LinkedIn</a>
+        <a href="https://github.com/florica-girisci" target="_blank">GitHub</a>
       </div>
     </div>
   </section>
 
-  <footer style="text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem;">
+  <footer style="text-align: center; padding: 3rem; color: var(--muted); font-size: 0.85rem;">
     &copy; 2026 Florica Girisci · IHK Certified App Developer
   </footer>
 
