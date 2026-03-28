@@ -54,10 +54,12 @@
 
     .status-badge { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.65rem; font-weight: 800; background: var(--accent-light); color: var(--accent); padding: 5px 12px; border-radius: 20px; border: 1px solid var(--accent); text-transform: uppercase; }
 
+    .btn-github { display: inline-flex; align-items: center; gap: 8px; margin-top: 1.5rem; padding: 0.8rem 1.5rem; background: #2D3748; color: white; text-decoration: none; border-radius: 12px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; border: 1px solid transparent; }
+    .btn-github:hover { background: #1A1F2B; border-color: var(--accent); color: var(--accent); }
+
     .full-gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 2rem; }
     .gallery-item { background: var(--bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 9/16; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .gallery-item img:hover { transform: scale(1.05); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
     .bulk-image-container, .uml-container { margin-top: 2rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); }
     .bulk-image-container img, .uml-container img { width: 100%; height: auto; display: block; }
@@ -66,7 +68,6 @@
     .module-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; border-top: 5px solid var(--ihk-blue); height: 100%; transition: transform 0.3s; }
     .module-item:hover { transform: translateY(-5px); }
     .module-item h4 { color: #FFFFFF; }
-    .module-date { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem; display: block; }
     
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
     .skill-pill { background: var(--accent-light); color: var(--accent); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; border: 1px solid rgba(0, 242, 254, 0.2); }
@@ -127,7 +128,7 @@
         <div class="gallery-item"><img src="favorites-portrait.png" alt="Favoriten"></div>
         <div class="gallery-item"><img src="detail-portrait.png" alt="Detailansicht"></div>
         <div class="gallery-item"><img src="map-left.png" alt="Karte"></div>
-        <div class="gallery-item"><img src="googlemap-right.png" alt="Google Map Ansicht"></div>
+        <div class="gallery-item"><img src="googlemap-right.png" alt="Map View"></div>
       </div>
     </div>
 
@@ -142,20 +143,22 @@
         <span class="skill-pill">SwiftUI</span><span class="skill-pill">Firebase</span><span class="skill-pill">SwiftData</span><span class="skill-pill">MVVM</span>
       </div>
       <div class="bulk-image-container">
-        <img src="neonarcadeBulk.png" alt="NeonArcadeGames Bulk Screenshots">
+        <img src="neonarcadeBulk.png" alt="NeonArcadeGames Screenshots">
       </div>
     </div>
 
     <div class="project-card">
-      <div class="status-badge" style="border-color: #6B6B6B; color: #94A3B8;">Code: Public on GitHub</div>
+      <div class="status-badge" style="border-color: var(--accent); color: var(--accent);">Open Source</div>
       <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent);">SWIFT GRUNDLAGEN</span>
       <h3 style="margin: 0.6rem 0; font-size: 1.8rem; font-family: var(--serif);">⚔️ RPG Battle Simulator</h3>
       <p style="color: var(--muted); max-width: 800px;">
         Rundenbasiertes Fantasy-Kampfsystem in Swift. Fokus auf Klassen-Strukturen, Inventarverwaltung und OOP.
       </p>
-      <div class="skill-pills">
-        <span class="skill-pill">Swift</span><span class="skill-pill">OOP</span><span class="skill-pill">Game Logic</span>
-      </div>
+      
+      <a href="https://github.com/FloricaGirisci/02-abschluss-rpg-FloricaGirisci" target="_blank" class="btn-github">
+        Code auf GitHub ansehen
+      </a>
+
       <div class="uml-container">
         <img src="diagram.png" alt="UML Software Architektur Diagramm">
       </div>
@@ -167,26 +170,26 @@
     <h2 class="section-title">Zertifizierte Qualifikationen</h2>
     <div class="module-grid">
       <div class="module-item">
-        <span class="module-date">Abschluss: 2025</span>
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent);">Abschluss 2025</span>
         <h4>🍎 iOS App Developer (IHK)</h4>
         <p style="font-size: 0.85rem; color: var(--muted);">Umfang: 290 Unterrichtsstunden</p>
         <div class="skill-pills">
-          <span class="skill-pill">SwiftUI</span><span class="skill-pill">MVVM</span><span class="skill-pill">Core Data</span><span class="skill-pill">Firebase</span>
+          <span class="skill-pill">SwiftUI</span><span class="skill-pill">MVVM</span><span class="skill-pill">Core Data</span><span class="skill-pill">Swift Data</span><span class="skill-pill">Firebase</span>
         </div>
       </div>
       <div class="module-item">
-        <span class="module-date">Abschluss: 2026</span>
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent);">Abschluss 2026</span>
         <h4>🤖 Android App Developer (IHK)</h4>
         <p style="font-size: 0.85rem; color: var(--muted);">Umfang: 245 Unterrichtsstunden</p>
         <div class="skill-pills">
-          <span class="skill-pill">Compose Essentials</span><span class="skill-pill">Room DB</span><span class="skill-pill">Retrofit API</span><span class="skill-pill">App-Testing</span>
+          <span class="skill-pill">Kotlin</span><span class="skill-pill">Compose</span><span class="skill-pill">Room DB</span><span class="skill-pill">Retrofit (API)</span><span class="skill-pill">App-Testing</span>
         </div>
       </div>
       <div class="module-item" style="border-top-color: var(--accent);">
-        <span class="module-date">Qualifizierung</span>
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent);">Zusatzqualifikation</span>
         <h4>🤝 Soft & Social Skills</h4>
         <div class="skill-pills">
-          <span class="skill-pill">Kommunikation & Teamdynamik</span><span class="skill-pill">Belbin-Teamrollen</span><span class="skill-pill">Resilienz</span><span class="skill-pill">Feedback-Methoden</span>
+          <span class="skill-pill">Kommunikation & Teamdynamik</span><span class="skill-pill">Belbin-Teamrollen</span><span class="skill-pill">Resilienz & Stressmanagement</span><span class="skill-pill">Feedback-Methoden</span><span class="skill-pill">Selbstreflexion</span>
         </div>
       </div>
     </div>
@@ -198,7 +201,7 @@
       <a href="mailto:florica.girisci@yahoo.com" class="contact-link">florica.girisci@yahoo.com</a>
       <div class="social-links">
         <a href="https://linkedin.com/in/florica-girisci" target="_blank">LinkedIn</a>
-        <a href="https://github.com/florica-girisci" target="_blank">GitHub</a>
+        <a href="https://github.com/FloricaGirisci" target="_blank">GitHub</a>
       </div>
     </div>
   </section>
